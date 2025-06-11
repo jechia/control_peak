@@ -12,8 +12,8 @@ A pipeline to generate control peaks based on eCLIP-seq peaks. Each control peak
 ### Quick Install
 
 ```bash
-git clone https://github.com/jechia/control_peaks.git
-cd control_peaks
+git clone https://github.com/jechia/control_peak.git
+cd control_peak
 ```
 
 ### Requirements
