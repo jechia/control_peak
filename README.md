@@ -42,6 +42,7 @@ sh genAnno.sh --gtf annotation/gencode.v46.primary_assembly.annotation.gtf \
 
 ```bash
 # Annotate the peaks
+mkdir anno
 bedtools intersect -a <sample>_peaks.bed \
                    -b annotation/gencode_v46_transcripts.bed \
                    -f 1 -wa -wb -s > anno/<sample>.bed
