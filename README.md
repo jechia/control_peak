@@ -29,8 +29,6 @@ The following software and tools are required:
 
 ### Prepare Annotation Files
 
-#### Note: This Annotation generation part is currently only available for linux system. For other systems, please use the generated annotation for human based on GENCODE V46 in "annotation.zip" or "annotation.tar.gz".
-
 ```bash
 # Download annotation from GENCODE database (GENCODE_V46)
 sh downAnno.sh
@@ -39,6 +37,7 @@ sh downAnno.sh
 sh genAnno.sh --gtf annotation/gencode.v46.primary_assembly.annotation.gtf \
               --rna-list RNA.list
 ```
+#### Note: This Annotation generation part is currently only available for linux system. For other systems, please use the generated annotation for human based on GENCODE V46 in "annotation.zip" or "annotation.tar.gz".
 
 ### Generate Control Peaks
 
