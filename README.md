@@ -29,6 +29,8 @@ The following software and tools are required:
 
 ### Prepare Annotation Files
 
+#### This Annotation generation part is currently only available for linux system. For other systems, please use generated annotation in "annotation.zip" or "annotation.tar.gz".
+
 ```bash
 # Download annotation from GENCODE database (GENCODE_V46)
 sh downAnno.sh
