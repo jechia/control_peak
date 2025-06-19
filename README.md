@@ -29,7 +29,7 @@ The following software and tools are required:
 
 ### Prepare Annotation Files
 
-#### This Annotation generation part is currently only available for linux system. For other systems, please use the generated annotation for human based on GENCODE V46 in "annotation.zip" or "annotation.tar.gz".
+#### Note: This Annotation generation part is currently only available for linux system. For other systems, please use the generated annotation for human based on GENCODE V46 in "annotation.zip" or "annotation.tar.gz".
 
 ```bash
 # Download annotation from GENCODE database (GENCODE_V46)
