@@ -55,5 +55,5 @@ python eCLIP_control_v4.py -i anno/<sample>.bed \
                            -p 10
 
 # Get fasta for the peak and control peaks
-sh getFasta.sh <sample>
+sh getFasta.sh -s <sample> -a ./annotation/GRCh38.p14.genome.fa -i result -o fasta
 ```

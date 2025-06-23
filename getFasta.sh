@@ -2,26 +2,55 @@
 
 # Genomic Data Processing Script
 # Processes BED files to extract peak and control sequences
-# Usage: ./getFasta.sh <sample_name> [reference_genome] [input_dir] [output_dir]
+# Usage: ./getFasta.sh -s <sample_name> -r [reference_genome] -i [input_dir] -o [output_dir]
+
+REFERENCE_GENOME="./annotation/GRCh38.p14.genome.fa"
+INPUT_DIR="result"
+OUTPUT_DIR="fasta"
+
+# Help message
+usage() {
+    echo "Usage: $0 -s <sample_name> [-r reference_genome] [-i input_dir] [-o output_dir]"
+    echo "  -s SAMPLE_NAME       Required: name of the sample to process"
+    echo "  -r REFERENCE_GENOME  Optional: path to reference genome (default: $REFERENCE_GENOME)"
+    echo "  -i INPUT_DIR         Optional: input directory (default: $INPUT_DIR)"
+    echo "  -o OUTPUT_DIR        Optional: output directory (default: $OUTPUT_DIR)"
+    exit 1
+}
+
+# Parse options
+while getopts ":s:r:i:o:" opt; do
+  case ${opt} in
+    s ) SAMPLE_NAME="$OPTARG"
+      ;;
+    r ) REFERENCE_GENOME="$OPTARG"
+      ;;
+    i ) INPUT_DIR="$OPTARG"
+      ;;
+    o ) OUTPUT_DIR="$OPTARG"
+      ;;
+    \? )
+      echo "Invalid option: -$OPTARG" >&2
+      usage
+      ;;
+    : )
+      echo "Option -$OPTARG requires an argument." >&2
+      usage
+      ;;
+  esac
+done
 
 # Check if required argument is provided
-if [ $# -lt 1 ]; then
-    echo "Usage: $0 <sample_name> [reference_genome] [input_dir] [output_dir]"
-    echo "  sample_name: Required - name of the sample to process"
-    echo "  reference_genome: Optional - path to reference genome (default: ./annotation/GRCh38.p14.genome.fa)"
-    echo "  input_dir: Optional - input directory (default: result)"
-    echo "  output_dir: Optional - output directory (default: fasta)"
-    exit 1
+if [ -z "$SAMPLE_NAME" ]; then
+    echo "Error: sample name is required."
+    usage
 fi
 
-# Command line arguments
-SAMPLE_NAME="$1"
-REFERENCE_GENOME="${2:-./annotation/GRCh38.p14.genome.fa}"
-INPUT_DIR="${3:-result}"
-OUTPUT_DIR="${4:-fasta}"
-
-# Ensure output directory exists
-mkdir -p "$OUTPUT_DIR"
+# Create output directory if it doesn't exist
+if [ ! -d "$OUTPUT_DIR" ]; then
+    echo "Output directory '$OUTPUT_DIR' does not exist. Creating it..."
+    mkdir -p "$OUTPUT_DIR"
+fi
 
 echo "Processing sample: ${INPUT_DIR}/$SAMPLE_NAME"
 echo "Reference genome: $REFERENCE_GENOME"
