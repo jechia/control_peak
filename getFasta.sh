@@ -9,21 +9,21 @@ if [ $# -lt 1 ]; then
     echo "Usage: $0 <sample_name> [reference_genome] [input_dir] [output_dir]"
     echo "  sample_name: Required - name of the sample to process"
     echo "  reference_genome: Optional - path to reference genome (default: ./annotation/GRCh38.p14.genome.fa)"
-    echo "  input_dir: Optional - input directory (default: new_result)"
-    echo "  output_dir: Optional - output directory (default: new_fasta)"
+    echo "  input_dir: Optional - input directory (default: result)"
+    echo "  output_dir: Optional - output directory (default: fasta)"
     exit 1
 fi
 
 # Command line arguments
 SAMPLE_NAME="$1"
 REFERENCE_GENOME="${2:-./annotation/GRCh38.p14.genome.fa}"
-INPUT_DIR="${3:-new_result}"
-OUTPUT_DIR="${4:-new_fasta}"
+INPUT_DIR="${3:-result}"
+OUTPUT_DIR="${4:-fasta}"
 
 # Ensure output directory exists
 mkdir -p "$OUTPUT_DIR"
 
-echo "Processing sample: $SAMPLE_NAME"
+echo "Processing sample: ${INPUT_DIR}/$SAMPLE_NAME"
 echo "Reference genome: $REFERENCE_GENOME"
 echo "Input directory: $INPUT_DIR"
 echo "Output directory: $OUTPUT_DIR"
@@ -57,4 +57,5 @@ bedtools getfasta \
     -bed "${INPUT_DIR}/${SAMPLE_NAME}_pair.bed" \
     -name > "${OUTPUT_DIR}/${SAMPLE_NAME}_control.fasta"
 
-echo "Processing complete for sample: $SAMPLE_NAME"
+echo "Processing complete for sample: ${SAMPLE_NAME}"
+echo "FASTA files saved to: ${OUTPUT_DIR}"

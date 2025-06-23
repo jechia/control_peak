@@ -633,7 +633,7 @@ def createArgs():
     parser.add_argument("-a","--anno",dest="anno",help="Transcript annotation file",required=True)
     parser.add_argument("-g","--gene",dest="gene",help="Gene annotation file",required=True)
     parser.add_argument("-p","--pool",dest="pool",type=int,help="Number of cores for multiprocessing",required=True)
-    parser.add_argument("-o", "--output", dest="output", help="Output directory", default="./new_result/")
+    parser.add_argument("-o", "--output", dest="output", help="Output directory", default="./result/")
     parser.add_argument("-s", "--seed", dest="seed", help="Seed for random selection", type=int,default=1234)
     return parser
     return parser
