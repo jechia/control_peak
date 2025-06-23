@@ -40,20 +40,21 @@ sh genAnno.sh --gtf annotation/gencode.v46.primary_assembly.annotation.gtf \
 #### Note: This Annotation generation part is currently only available for linux system. For other systems, please use the generated annotation for human based on GENCODE V46 in "annotation.zip" or "annotation.tar.gz".
 
 ### Generate Control Peaks
+We're using this with our example dataset K562_RBFOX2_peaks.bed
 
 ```bash
 # Annotate the peaks
 mkdir anno
-bedtools intersect -a <sample>_peaks.bed \
+bedtools intersect -a K562_RBFOX2_peaks.bed \
                    -b annotation/gencode_v46_transcripts.bed \
-                   -f 1 -wa -wb -s > anno/<sample>.bed
+                   -f 1 -wa -wb -s > anno/K562_RBFOX2.bed
 
 # Generate control peaks
-python eCLIP_control_v4.py -i anno/<sample>.bed \
+python eCLIP_control_v4.py -i anno/K562_RBFOX2.bed \
                            -a annotation/gencode_v46_anno.bed \
                            -g annotation/genes.bed \
                            -p 10
 
 # Get fasta for the peak and control peaks
-sh getFasta.sh -s <sample> -a ./annotation/GRCh38.p14.genome.fa -i result -o fasta
+sh getFasta.sh -s K562_RBFOX2 -a ./annotation/GRCh38.p14.genome.fa -i result -o fasta
 ```
