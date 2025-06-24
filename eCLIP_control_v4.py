@@ -19,7 +19,7 @@ from argparse import ArgumentParser
 import time
 import multiprocessing
 from itertools import zip_longest, chain
-import intervals as I
+import portion as I
 import random
 from operator import itemgetter
 

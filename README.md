@@ -23,7 +23,7 @@ The following software and tools are required:
 - Bash 4.0 or higher
 - Standard Unix tools (awk, sed, grep)
 - bedtools
-- python-intervals
+- portion(pip install portion)
 
 ## Basic Usage
 
